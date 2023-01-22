@@ -18,8 +18,9 @@ class MainWindow(tk.Tk):
 
         self.notebook = ttk.Notebook(self)
         self.notebook.grid(row=0, column=0, sticky='nsew')
-        self.url = json.load(open('config.txt'))['url']
-        self.servers = server_requests.get_server(self.url)
+        jsonstring = json.load(open('config.txt'))
+        self.url = jsonstring['url']
+        self.servers = server_requests.get_server(self.url,jsonstring['exclude_server'])
 
         self.listboxes = {}
         for server in self.servers:
@@ -32,11 +33,11 @@ class MainWindow(tk.Tk):
 
     def update_data(self):
         for server in self.servers:
-            print(server['servercode'])
+            
             self.listboxes[server['servercode']].delete(0, tk.END)
             stations = server_requests.get_data(server['servercode'],self.url)
             for station in stations:
-                print(station)
+                
                 if station['available']:
                     self.listboxes[server['servercode']].insert(
                         tk.END, f'\u2705 {station["name"]}')
