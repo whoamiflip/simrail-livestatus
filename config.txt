@@ -1,3 +1,23 @@
 {
-  "url": "https://panel.simrail.eu:8084/"
+  "url": "https://panel.simrail.eu:8084/",
+  "exclude_server": [
+    "cn1",
+    "cz1",
+    "cz2",
+    "es1",
+    "es2",
+    "fr1",
+    "fr2",
+    "it1",
+    "pl1",
+    "pl2",
+    "pl3",
+    "pl4",
+    "pl5",
+    "pl6",
+    "pl7",
+    "pl8",
+    "pt1",
+    "ua1"
+  ]
 }
