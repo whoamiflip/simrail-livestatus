@@ -1,16 +1,19 @@
 import requests
 
-def get_server(url):
+def get_server(url, exclude_server : list):
     response = requests.get(url + "servers-open")
     json_data = response.json();
     servers = []
     for server in  json_data['data']:
-        server_obj = {
-            'servercode': server['ServerCode'],
-            'servername': server['ServerName'],
-            'serverstatus':server['IsActive']
+        if (server['ServerCode'] in exclude_server):
+            continue
+        else:
+            server_obj = {
+                'servercode': server['ServerCode'],
+                'servername': server['ServerName'],
+                'serverstatus':server['IsActive']
             }
-        servers.append(server_obj)
+            servers.append(server_obj)
 
     return servers
 
