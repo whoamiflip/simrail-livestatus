@@ -1,0 +1,3 @@
+{
+  "url": "https://panel.simrail.eu:8084/"
+}
